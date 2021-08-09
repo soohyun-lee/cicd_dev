@@ -1,5 +1,7 @@
 from django.urls import path, include
 
+
+
 urlpatterns = [
-    path('book', include('blog.urls'))
+    path('book', include('blog.urls')),
 ]
