@@ -7,12 +7,6 @@ class Book(View):
     def get(self, request):
         all_booklist = Booklist.objects.all()
 
-        data = ['aws', 'test']
-        a = Booklist.objects.filter(name__in=data)
-        if a.count() == len(data):
-            return JsonResponse({'message' : data}, status=200) 
-        else:
-            return JsonResponse({'message' : 'no'}, status=200) 
 
         data = [{
             'name' : book.name,
