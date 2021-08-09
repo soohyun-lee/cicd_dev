@@ -1,0 +1,14 @@
+version : "3"
+services:
+    server:
+        image: docker/cicde:dev
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        command: python manage.py runserver 0.0.0.0:8000
+        ports:
+            - "8000:8000"
+        command: gunicorn --bind :8000 --workers 3 --threads 2 --capture-output --access-logfile /logs/gunicorn-access.log --timeout 300 anyfit.wsgi:application
+        container_name: 'cicd_dev'
+        volumes:
+            - .:/code
