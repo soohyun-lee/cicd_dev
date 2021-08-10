@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "command": [
+          "gunicorn",
+          "--bind",
+          ":8000",
+          "--workers",
+          "3",
+          "--threads",
+          "2",
+          "--capture-output",
+          "--access-logfile",
+          "/logs/gunicorn-access.log",
+          "--timeout",
+          "300",
+          "--env",
+          "DJANGO_SETTINGS_MODULE=cicd_project.settings",
+          "cicd_project.wsgi:application"
+        ],
+        "essential": true,
+        "memoryReservation": 128,
+        "image": "vivadockers/buddya-backend:dev",
+        "name": "server",
+        "portMappings": [
+          {
+            "containerPort": 8000,
+            "hostPort": 8000
+          }
+        ]
+      }
+    ],
+    "family": "",
+    "volumes": []
+  }
+  
