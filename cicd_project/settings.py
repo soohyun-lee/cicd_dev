@@ -1,7 +1,6 @@
 import my_settings
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -12,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = my_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -26,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'blog'
+	'blog',
+    # 'django_elasticsearch_dsl'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +59,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cicd_project.wsgi.application'
 
-
+#celery
+BROKER_URL = 'django://'
+# CELERY_BROKER_URL = 'django://'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_TIMEZONE = 'Asia/Seoul'
+# CELERY_BEAT_SCHEDULE = {
+#     'task-number-one' : {
+#         'task' : 'blog.tasks.bookcreate',
+#         'schedule' : crontab(minute='*/15')
+#     }
+# }
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -134,3 +147,10 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
+
+#elastic
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'elasticsearch:9200'
+    },
+}

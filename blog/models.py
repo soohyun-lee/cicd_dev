@@ -1,9 +1,10 @@
 from django.db import models
-from django.db.models.fields import CharField
+from django.db.models.fields import CharField, DateTimeField
 
 class Booklist(models.Model):
-    name = CharField(max_length=100, null=True)
-    category = CharField(max_length=40, null=True)
+    name = models.CharField(max_length=100)
+    category = models.CharField(max_length = 100)
+    tag = models.CharField(max_length=100)
 
     class Meta:
-        db_table = 'bookList'
+        db_table = 'booklist'

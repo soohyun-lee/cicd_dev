@@ -1,28 +1,29 @@
 import json
-from django.http import JsonResponse
+from datetime import timedelta, datetime
+from django.http import JsonResponse, response
 from django.views import View
+# from elasticsearch import Elasticsearch
+
 from .models import Booklist
+# # from .documents import BookDocument
+
 
 class Book(View):
     def get(self, request):
-        all_booklist = Booklist.objects.all()
+        search_data = request.GET['search']
+        data = Booklist.objects.all()
+        data = {
+            'name' : data.name,
+            'category' : data.category
+        }
+        JsonResponse({'message' : data}, status=200)
 
+    def post(self, request):
+        data = json.loads(request.body)
+        
+        Booklist.objects.create(
+            name = data['name'],
+            category = data['category']
+        )
 
-        data = [{
-            'name' : book.name,
-            'category' : book.category
-        } for book in all_booklist]
-
-        return JsonResponse({'message' : data}, status=200)
-
-# @api.get('/items/1')
-# def get(request, item_id: int):
-#     return {"date" : item_id}
-#     all_booklist = Booklist.objects.all()
-
-#     data = [{
-#         'name' : book.name,
-#         'category' : book.category
-#     } for book in all_booklist]
-
-#     return JsonResponse({'message' : data}, status=200)
+        return JsonResponse({'message' : 'success'}, status=200)

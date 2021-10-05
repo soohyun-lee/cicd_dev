@@ -6,9 +6,9 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '1q2w3e4r',
         'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS' : {
-            'charset' : 'utf8mb4'
-        }
+        'PORT': '',
+        # 'OPTIONS' : {
+        #     'charset' : 'utf8mb4'
+        # }
     }
 }
