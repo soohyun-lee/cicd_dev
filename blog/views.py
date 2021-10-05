@@ -14,7 +14,8 @@ class Book(View):
         data = Booklist.objects.all()
         data = {
             'name' : data.name,
-            'category' : data.category
+            'category' : data.category,
+            'tag' : data.tag
         }
         JsonResponse({'message' : data}, status=200)
 
