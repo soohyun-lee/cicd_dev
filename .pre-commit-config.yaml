@@ -22,7 +22,7 @@ repos:
   - repo: local
     hooks:
       - id: pre-push-django-makemigrations
-        # stages: [push]
+        stages: [push]
         name: Check django migrations
         entry: python manage.py makemigrations --check --dry-run
         language: system
