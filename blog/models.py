@@ -7,6 +7,7 @@ class Booklist(models.Model):
     tag = models.CharField(max_length=100, null=True)
     tag_second = models.CharField(max_length=10, null=True)
     second = models.CharField(max_length=100, null=True)
-
+    tag_plus = models.CharField(max_length=100, null=True)
+    
     class Meta:
         db_table = 'booklist'
