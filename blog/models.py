@@ -5,7 +5,7 @@ class Booklist(models.Model):
     name = models.CharField(max_length=100, null=True)
     category = models.CharField(max_length = 100, null=True)
     tag = models.CharField(max_length=100, null=True)
-    tag_secodne = models.CharField(max_length=10, null=True)
+    tag_second = models.CharField(max_length=10, null=True)
     second = models.CharField(max_length=100, null=True)
 
     class Meta:
