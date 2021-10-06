@@ -17,3 +17,15 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
+
+
+  - repo: local
+    hooks:
+      - id: pre-push-django-makemigrations
+        stages: [push]
+        name: Check django migrations
+        entry: python manage.py makemigrations --check --dry-run
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
