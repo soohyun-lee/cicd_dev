@@ -9,20 +9,20 @@
 #     -   id: check-yaml
 #     -   id: check-added-large-files
 repos:
-  - repo: local
-    hooks:
-      - id: pre-commit-django-migrations
-        name: Check django migrations
-        entry: ./manage.py makemigrations --check
-        language: system
-        types: [python]
-        pass_filenames: false
+  # - repo: local
+  #   hooks:
+  #     - id: pre-commit-django-migrations
+  #       name: Check django migrations
+  #       entry: ./manage.py makemigrations --check
+  #       language: system
+  #       types: [python]
+  #       pass_filenames: false
 
 
   - repo: local
     hooks:
       - id: pre-push-django-makemigrations
-        stages: [push]
+        # stages: [push]
         name: Check django migrations
         entry: python manage.py makemigrations --check --dry-run
         language: system
